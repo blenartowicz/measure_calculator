@@ -1,8 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 
-# Declare result var
-result = tk.StringVar()
+
 
 def get_value():
     # Get value from the enrty box and converting to float
@@ -42,9 +41,13 @@ entry_var = tk.StringVar()
 value_entry = ttk.Entry(window, textvariable=entry_var)
 value_entry.grid(column=0, row=2)
 
+# Declare result var
+result = tk.StringVar()
+
 # Create and configure button
 button = ttk.Button(master=window, text="Przelicz", command=get_value)
 button.grid(column=0, row=3)
+
 
 # Decalre result label
 result_label = tk.Label(window, textvariable=result)
