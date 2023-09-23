@@ -1,0 +1,53 @@
+import tkinter as tk
+from tkinter import ttk
+
+# Declare result var
+result = tk.StringVar()
+
+def get_value():
+    # Get value from the enrty box and converting to float
+    calc_value = float(entry_var.get())
+
+    # Get value from the combo box
+    combo_val = combo.get()
+
+    # Calculate theresult based on the combo box value
+    if combo_val == "uncje na gramy":
+        fun_result = calc_value * 28.35
+    elif combo_val == "funty na kilogramy":
+        fun_result = calc_value * 0.45
+    elif combo_val == "filiżanki na mililitry":
+        fun_result = calc_value * 236.59
+    elif combo_val == "uncja na mililitry": 
+        fun_result = calc_value * 29.57
+
+    # Set value to result variable
+    result.set(str(fun_result))
+
+# Create and configure function window
+window = tk.Tk()
+window.title("Program do liczenia miar US-PL")
+window.geometry("450x200")
+
+# Create and configure title label
+label_title = tk.Label(text='Najpierw wybierz odpowiednie miary, potem wpisz wartości i naciśnij Przelicz')
+label_title.grid(column=0, row=0)
+
+# Create combo box
+combo = ttk.Combobox(window, values=["uncje na gramy", "funty na kilogramy", "filiżanki na mililitry", "uncja na mililitry"])
+combo.grid(column=0, row=1)
+
+# Create entry and set value to variable entry_var
+entry_var = tk.StringVar()
+value_entry = ttk.Entry(window, textvariable=entry_var)
+value_entry.grid(column=0, row=2)
+
+# Create and configure button
+button = ttk.Button(master=window, text="Przelicz", command=get_value)
+button.grid(column=0, row=3)
+
+# Decalre result label
+result_label = tk.Label(window, textvariable=result)
+result_label.grid(column=0, row=4)
+
+window.mainloop()
